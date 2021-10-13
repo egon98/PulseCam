@@ -1,0 +1,76 @@
+<section>
+  <form
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="10px"
+    [formGroup]="loginForm"
+    (ngSubmit) = "onSubmit()">
+    <mat-form-field>
+      <input
+      type="email"
+      matInput
+      placeholder="Your Email"
+      formControlName="email">
+      <mat-hint>Please enter a valid email.</mat-hint>
+      <mat-error>Invalid or missing email.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+      type = "password"
+      matInput
+      placeholder="Your Password"
+      formControlName="password">
+      <mat-hint>Please enter your password.</mat-hint>
+      <mat-error>Missing password.</mat-error>
+    </mat-form-field>
+    <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid">Submit</button>
+  </form>
+</section>
+
+
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '{your-app-id}',
+      cookie     : true,
+      xfbml      : true,
+      version    : '{api-version}'
+    });
+
+    FB.AppEvents.logPageView();
+
+  };
+
+  (function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/hu_HU/sdk.js#xfbml=1&version=v12.0&appId=257241486190003&autoLogAppEvents=1" nonce="ATtYriea"></script>
+
+<div>
+  <button id="fbLogin" type="button" (click)="loginWithFacebook()" class="btn btn-primary btn-block"><i class="bi bi-facebook"></i> Login with Facebook</button>
+</div>
+
+<div *ngIf="isLoggedin === true">
+  <div class="form-group">
+    <label>First Name</label>
+    <input type="text" class="form-control" [value]="socialUser.firstName" id="firstname" readonly>
+  </div>
+  <div class="form-group">
+    <label>Last Name</label>
+    <input type="text" class="form-control" [value]="socialUser.lastName" id="lastname" readonly>
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    <input type="text" class="form-control" [value]="socialUser.email" id="email" readonly>
+  </div>
+
+
+</div>
