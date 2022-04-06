@@ -2,8 +2,14 @@ body {
   height: 100%;
 }
 
-form {
-  margin-top: 2%;
+input {
+  font-size: 15px;
 }
 
+a {
+  text-decoration: none;
+}
 
+a:hover {
+  text-decoration: underline;
+}

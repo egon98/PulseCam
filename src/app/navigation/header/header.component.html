@@ -4,20 +4,26 @@
       <mat-icon>menu</mat-icon>
     </button>
   </div>
-  <div>
+  <div *ngIf="!authService.userData as user">
     <a routerLink="/">PulseCam</a>
   </div>
-  <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
-    <ul fxLayout fxLayoutGap="10px" class="navigation-items">
-      <li *ngIf=""></li>
-      <li *ngIf="!isAuth">
+  <div *ngIf="authService.userData as user">
+    <a routerLink="/home">PulseCam</a>
+  </div>
+  <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+
+    <ul fxFlex fxLayoutAlign="end" fxLayoutGap="10px" class="navigation-items" style="margin-right: 3%">
+      <li *ngIf="!authService.userData as user">
         <a routerLink="/signup">Sign Up</a>
       </li>
-      <li *ngIf="!isAuth">
+      <li *ngIf="!authService.userData as user">
         <a routerLink="/login">Login</a>
       </li>
-      <li *ngIf="isAuth">
-        <a (click)="logout()" routerLink="/home">Logout</a>
+      <li *ngIf="authService.userData as user" >
+        <a routerLink="/patients" style="margin-right: 5%">Patients</a>
+        <a routerLink="/addpatient" style="margin-right: 5%">Add Patient</a>
+        <a routerLink="/profile" style="margin-right: 5%">Profile</a>
+        <a (click)="authService.LogOut()" routerLink="/home">Logout</a>
       </li>
     </ul>
   </div>

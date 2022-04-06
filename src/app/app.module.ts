@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +24,26 @@ import {MatInput} from "@angular/material/input";
 import { WelcomeComponent } from './welcome/welcome.component';
 import {FacebookLoginProvider, SocialLoginModule, SocialAuthServiceConfig} from "angularx-social-login";
 import { HomeComponent } from './home/home.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {FirestoreModule} from "@angular/fire/firestore";
+import {AngularFireModule} from "@angular/fire/compat";
+import {environment} from "../environments/environment";
+import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
+import {AngularFireAuthModule} from "@angular/fire/compat/auth";
+import { EmailverificationComponent } from './emailverification/emailverification.component';
+import {FirebaseAppModule} from "@angular/fire/app";
+import { PasswordResetComponent } from './password-reset/password-reset.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AddpatientComponent } from './addpatient/addpatient.component';
+import {MatSelectCountryModule} from "@angular-material-extensions/select-country";
+import {HttpClientModule} from "@angular/common/http";
+import { PatientsComponent } from './patients/patients.component';
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatSortModule} from "@angular/material/sort";
+import {DataTablesModule} from "angular-datatables";
 
 @NgModule({
   declarations: [
@@ -33,7 +53,12 @@ import { HomeComponent } from './home/home.component';
     SidenavListComponent,
     HeaderComponent,
     WelcomeComponent,
-    HomeComponent
+    HomeComponent,
+    EmailverificationComponent,
+    PasswordResetComponent,
+    ProfileComponent,
+    AddpatientComponent,
+    PatientsComponent
   ],
   imports: [
     BrowserModule,
@@ -52,13 +77,26 @@ import { HomeComponent } from './home/home.component';
     MatTabsModule,
     MatIconModule,
     FlexLayoutModule,
-    SocialLoginModule
+    SocialLoginModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    MatSelectCountryModule.forRoot('en'),
+    HttpClientModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    DataTablesModule
   ],
   exports: [
     MatSidenavModule,
     MatTabsModule,
     MatToolbarModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    FirebaseAppModule,
 
   ],
   providers: [AuthService,
@@ -78,6 +116,7 @@ import { HomeComponent } from './home/home.component';
     }
   ],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 
 })
 
