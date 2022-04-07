@@ -44,6 +44,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSortModule} from "@angular/material/sort";
 import {DataTablesModule} from "angular-datatables";
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import {DataTablesModule} from "angular-datatables";
     PasswordResetComponent,
     ProfileComponent,
     AddpatientComponent,
-    PatientsComponent
+    PatientsComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
