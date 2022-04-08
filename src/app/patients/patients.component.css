@@ -1,0 +1,23 @@
+/*td, th {
+  border: 1px solid #000000;
+  text-align: left;
+  padding: 8px;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}*/
+table {
+  width: 100%;
+}
+
+th.mat-header-cell {
+  width: 20%;
+  font-size: 16px;
+}
+
+td.mat-cell {
+  font-family: Verdana,sans-serif;
+  font-size: 14px;
+}

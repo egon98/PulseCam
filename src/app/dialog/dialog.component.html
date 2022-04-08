@@ -1,0 +1,27 @@
+<div class="basic-container">
+
+  <mat-form-field>
+    <input matInput placeholder="Name" [(ngModel)]="name">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Country" [(ngModel)]="country">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Date of Birth" [(ngModel)]="dateofbirth">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Mother's Maiden Name" [(ngModel)]="maiden">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Social Security Number" [(ngModel)]="ssn">
+  </mat-form-field>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="closeDialog()">Close</button>
+    <button mat-button [mat-dialog-close]="{name: name, country: country, dateofbirth: dateofbirth, maiden: maiden, ssn: ssn}" cdkTrapFocus [cdkTrapFocusAutoCapture]="true">Ok</button>
+  </div>
+</div>

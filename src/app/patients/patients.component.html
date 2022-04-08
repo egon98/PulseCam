@@ -1,0 +1,72 @@
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($any($event.target).value)" placeholder="Filter">
+</mat-form-field>
+<mat-table #table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
+
+
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+    <mat-cell *matCellDef="let valami">
+      {{valami.name}}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="country">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Country</mat-header-cell>
+    <mat-cell *matCellDef="let valami">
+     {{valami.country}}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="dateofbirth">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Date of Birth</mat-header-cell>
+    <mat-cell *matCellDef="let valami">
+      {{valami.dateofbirth}}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="maiden">
+    <mat-header-cell *matHeaderCellDef>Mother's maiden name</mat-header-cell>
+    <mat-cell *matCellDef="let valami">
+      {{valami.maiden}}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="ssn">
+    <mat-header-cell *matHeaderCellDef>Social security number</mat-header-cell>
+    <mat-cell *matCellDef="let valami">
+       {{valami.ssn}}
+    </mat-cell>
+  </ng-container>
+
+
+
+  <ng-container matColumnDef="editBtn">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let valami">
+      {{valami.editBtn}}
+      <button (click)="dialogOpen(valami, $event)" style="margin-right: 8%" mat-raised-button color="primary">Edit</button>
+      <button (click)="deleteRowData(valami, $event)" mat-raised-button color="warn">Delete</button>
+    </mat-cell>
+  </ng-container>
+
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;">
+
+
+
+  </mat-row>
+
+
+<!--
+<tr *ngFor="let names of patients | async">
+  <td *ngIf="names.name">{{names.name}}</td>
+  <td *ngIf="names.dateofbirth">{{names.dateofbirth}}</td>
+</tr>
+-->
+</mat-table>
+
+
+<mat-paginator [length]="100" [pageSize]="5" [pageSizeOptions]="[5, 10, 25]" aria-label="Select page">
+</mat-paginator>

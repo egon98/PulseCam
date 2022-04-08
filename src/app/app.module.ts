@@ -45,6 +45,9 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSortModule} from "@angular/material/sort";
 import {DataTablesModule} from "angular-datatables";
 import { DialogComponent } from './dialog/dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {A11yModule} from "@angular/cdk/a11y";
+import { DialogOnDeleteRowComponent } from './dialog-on-delete-row/dialog-on-delete-row.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +63,8 @@ import { DialogComponent } from './dialog/dialog.component';
     ProfileComponent,
     AddpatientComponent,
     PatientsComponent,
-    DialogComponent
+    DialogComponent,
+    DialogOnDeleteRowComponent
   ],
   imports: [
     BrowserModule,
@@ -91,7 +95,9 @@ import { DialogComponent } from './dialog/dialog.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    DataTablesModule
+    DataTablesModule,
+    MatDialogModule,
+    A11yModule
   ],
   exports: [
     MatSidenavModule,
