@@ -11,11 +11,9 @@ import {FormControl, FormGroup} from "@angular/forms";
 export class DialogComponent implements OnInit {
   name: any;
   country: any;
-  dateofbirth: any;
+  dateofbirth: Date;
   maiden: any;
   ssn: any;
-
-
 
   constructor(
     public dialog: MatDialogRef<DialogComponent>,

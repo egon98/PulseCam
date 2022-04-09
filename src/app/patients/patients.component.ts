@@ -61,26 +61,34 @@ export class PatientsComponent implements OnInit {
       disableClose: true,
       data: row
     });
-
     dialog.afterClosed().subscribe(res => {
       console.log('The dialog was closed');
-      console.log(res)
-        if(res) {
-          this.dataSource.data[res.position - 1] = res;
-          this.dataSource._updateChangeSubscription();
-          this.firestore.collection('Patients').doc(row.id).update({
-            name: res.name,
-            country: res.country,
-            dateofbirth: res.dateofbirth,
-            maiden: res.maiden,
-            ssn: res.ssn
-          })
-        }
 
+      /*if(row.dateofbirth !== res.dateofbirth.toISOString().split('T')[0]) {
+        res.dateofbirth.setMinutes(res.dateofbirth.getMinutes() - res.dateofbirth.getTimezoneOffset());
+        res.dateofbirth = res.dateofbirth.toISOString().split('T')[0]
+      }*/
+
+        if(res) {
+
+          //this.dataSource.data[res.position - 1] = res;
+          //this.dataSource._updateChangeSubscription();
+          console.log(res.dateofbirth)
+          console.log(row.dateofbirth)
+            this.firestore.collection('Patients').doc(row.id).update({
+              name: res.name,
+              country: res.country,
+              maiden: res.maiden,
+              ssn: res.ssn
+            })
+
+            res.dateofbirth.setMinutes(res.dateofbirth.getMinutes() - res.dateofbirth.getTimezoneOffset());
+            this.firestore.collection('Patients').doc(row.id).update({
+              dateofbirth: res.dateofbirth.toISOString().split('T')[0]
+            })
+        }
     });
   }
-
-
 
   deleteRowData(row: Patient, event) {
     const dialog = this.dialog.open(DialogOnDeleteRowComponent, {
@@ -102,6 +110,5 @@ announceSortChange(sortState: Sort) {
     this.announcer.announce('Sorting cleared');
   }
 }
-
 
 }

@@ -9,7 +9,15 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput placeholder="Date of Birth" [(ngModel)]="dateofbirth">
+    <mat-label>Date of Birth</mat-label>
+    <input matInput
+           [(ngModel)]="dateofbirth"
+           [matDatepicker]="picker"
+           type="text"
+
+    />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
   <mat-form-field>

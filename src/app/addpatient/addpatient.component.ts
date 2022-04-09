@@ -1,21 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Form, FormControl, FormGroup, Validators} from "@angular/forms";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {Country} from "@angular-material-extensions/select-country";
 import {v4 as uuidv4} from 'uuid'
+import firebase from "firebase/compat";
+import CustomProvider = firebase.appCheck.CustomProvider;
+import {MAT_DATEPICKER_VALIDATORS} from "@angular/material/datepicker";
+import {DatepickerConfig, DatepickerModule} from "ngx-bootstrap/datepicker";
+import {isValidDate} from "ngx-bootstrap/timepicker/timepicker.utils";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-addpatient',
   templateUrl: './addpatient.component.html',
   styleUrls: ['./addpatient.component.css']
 })
-export class AddpatientComponent implements OnInit {
+export class AddpatientComponent implements OnInit{
   public country;
   id: any;
-  constructor(private firestore: AngularFirestore) { }
+  constructor(private firestore: AngularFirestore) {
 
-  ngOnInit(): void {
   }
+
+ngOnInit(): void {
+
+}
 
   form = new FormGroup({
     name: new FormControl(''),
@@ -35,6 +44,7 @@ export class AddpatientComponent implements OnInit {
       console.log('Form cannot be submitted with empty data')
     } else {
       this.id = uuidv4()
+      this.form.value.dateofbirth.setMinutes(this.form.value.dateofbirth.getMinutes() - this.form.value.dateofbirth.getTimezoneOffset());
       this.firestore.collection(
         'Patients').doc(this.id).set({
         id: this.id,

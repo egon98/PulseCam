@@ -11,6 +11,7 @@
     formControlName="name"
     type="text"
     class="input-field col s12"
+         autocomplete="off"
   />
   </mat-form-field>
 <br>
@@ -21,6 +22,7 @@
            formControlName="dateofbirth"
            type="text"
            class="input-field col s12"
+           autocomplete="off"
     />
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
@@ -28,7 +30,7 @@
 
   <br>
 
-  <mat-select-country appearance="outline" label="Country" formControlName="country" (onCountrySelected)="onCountrySelected($event)">
+  <mat-select-country appearance="outline" label="Country" formControlName="country" autocomplete="off" (onCountrySelected)="onCountrySelected($event)">
 
   </mat-select-country>
 
@@ -40,6 +42,7 @@
            formControlName="ssn"
            type="text"
            class="input-field col s12"
+           autocomplete="off"
     />
   </mat-form-field>
 
@@ -51,6 +54,7 @@
            formControlName="maiden"
            type="text"
            class="input-field col s12"
+           autocomplete="off"
     />
   </mat-form-field>
   <br>

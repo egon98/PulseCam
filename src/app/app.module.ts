@@ -26,7 +26,7 @@ import {FacebookLoginProvider, SocialLoginModule, SocialAuthServiceConfig} from 
 import { HomeComponent } from './home/home.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatNativeDateModule} from "@angular/material/core";
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule} from "@angular/material/core";
 import {FirestoreModule} from "@angular/fire/firestore";
 import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../environments/environment";
@@ -106,6 +106,7 @@ import { DialogOnDeleteRowComponent } from './dialog-on-delete-row/dialog-on-del
     MatFormFieldModule,
     FirebaseAppModule,
 
+
   ],
   providers: [AuthService,
     {
@@ -121,8 +122,10 @@ import { DialogOnDeleteRowComponent } from './dialog-on-delete-row/dialog-on-del
           }
         ]
       } as SocialAuthServiceConfig,
-    }
+    },
+    {provide: MAT_DATE_LOCALE, useValue: 'en-GB' }
   ],
+
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 
