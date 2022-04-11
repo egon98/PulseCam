@@ -1,7 +1,7 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, Input, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-dialog',
@@ -9,7 +9,8 @@ import {FormControl, FormGroup} from "@angular/forms";
   styleUrls: ['./dialog.component.css']
 })
 export class DialogComponent implements OnInit {
-  name: any;
+//form: FormGroup;
+  name: string;
   country: any;
   dateofbirth: Date;
   maiden: any;
@@ -18,12 +19,21 @@ export class DialogComponent implements OnInit {
   constructor(
     public dialog: MatDialogRef<DialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
+    private firestore: AngularFirestore
   ) {
     this.name = this.data.name;
     this.country = this.data.country;
     this.dateofbirth = this.data.dateofbirth;
     this.maiden = this.data.maiden;
     this.ssn = this.data.ssn;
+
+    /*this.form = new FormGroup({
+      name: new FormControl(this.name),
+      country: new FormControl(this.country),
+      dateofbirth: new FormControl(this.dateofbirth),
+      maiden: new FormControl(this.maiden),
+      ssn: new FormControl(this.ssn)
+    })*/
   }
 
   ngOnInit(): void {
@@ -31,7 +41,14 @@ export class DialogComponent implements OnInit {
   }
 
   closeDialog() {
-    this.dialog.close();
+    if(this.name.match('^[a-zA-Z]+$')) {
+      this.dialog.close();
+    }
+
+  }
+
+  closeAndSetData() {
+      this.dialog.close(MAT_DIALOG_DATA);
   }
 
 

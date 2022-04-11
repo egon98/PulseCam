@@ -75,13 +75,14 @@ export class PatientsComponent implements OnInit {
           //this.dataSource._updateChangeSubscription();
           console.log(res.dateofbirth)
           console.log(row.dateofbirth)
+          if(res.name !== '') {
             this.firestore.collection('Patients').doc(row.id).update({
               name: res.name,
               country: res.country,
               maiden: res.maiden,
               ssn: res.ssn
             })
-
+          }
             res.dateofbirth.setMinutes(res.dateofbirth.getMinutes() - res.dateofbirth.getTimezoneOffset());
             this.firestore.collection('Patients').doc(row.id).update({
               dateofbirth: res.dateofbirth.toISOString().split('T')[0]

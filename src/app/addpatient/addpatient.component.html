@@ -18,6 +18,7 @@
   <mat-form-field appearance="fill" style="width: 20%; font-size: 15px">
     <mat-label>Date of Birth</mat-label>
     <input matInput
+           readonly
            [matDatepicker]="picker"
            formControlName="dateofbirth"
            type="text"
@@ -27,7 +28,6 @@
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
-
   <br>
 
   <mat-select-country appearance="outline" label="Country" formControlName="country" autocomplete="off" (onCountrySelected)="onCountrySelected($event)">

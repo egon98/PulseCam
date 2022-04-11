@@ -27,7 +27,7 @@ ngOnInit(): void {
 }
 
   form = new FormGroup({
-    name: new FormControl(''),
+    name: new FormControl('', [Validators.pattern('^[a-zA-ZÀ-ÿ_ ]*$')]),
     dateofbirth: new FormControl(''),
     ssn: new FormControl(''),
     country: new FormControl(''),
