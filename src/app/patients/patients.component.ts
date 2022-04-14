@@ -12,7 +12,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {DialogComponent} from "../dialog/dialog.component";
 import {LiveAnnouncer} from "@angular/cdk/a11y";
 import {FormControl, FormGroup} from "@angular/forms";
-import {DialogOnDeleteRowComponent} from "../dialog-on-delete-row/dialog-on-delete-row.component";
+
 
 @Component({
   selector: 'app-patients',
@@ -92,15 +92,11 @@ export class PatientsComponent implements OnInit {
   }
 
   deleteRowData(row: Patient, event) {
-    const dialog = this.dialog.open(DialogOnDeleteRowComponent, {
-      width: '400px',
-      height: '190px',
-      disableClose: true
-    });
 
-    dialog.afterClosed().subscribe(res => {
-        this.firestore.collection('Patients').doc(row.id).delete()
-    });
+    if(confirm('Are you sure you want to delete this patient?' + ' ' + row.name)) {
+      this.firestore.collection('Patients').doc(row.id).delete()
+    }
+
   }
 
 

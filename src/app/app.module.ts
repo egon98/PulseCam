@@ -47,7 +47,7 @@ import {DataTablesModule} from "angular-datatables";
 import { DialogComponent } from './dialog/dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {A11yModule} from "@angular/cdk/a11y";
-import { DialogOnDeleteRowComponent } from './dialog-on-delete-row/dialog-on-delete-row.component';
+
 
 @NgModule({
   declarations: [
@@ -63,8 +63,7 @@ import { DialogOnDeleteRowComponent } from './dialog-on-delete-row/dialog-on-del
     ProfileComponent,
     AddpatientComponent,
     PatientsComponent,
-    DialogComponent,
-    DialogOnDeleteRowComponent
+    DialogComponent
   ],
   imports: [
     BrowserModule,

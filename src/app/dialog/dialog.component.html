@@ -4,9 +4,9 @@
     <input matInput placeholder="Name" [(ngModel)]="name" autocomplete="off">
   </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="Country" [(ngModel)]="country">
-  </mat-form-field>
+  <mat-select-country appearance="outline" label="Country" [(ngModel)]="country" formControlName="country" autocomplete="off" (onCountrySelected)="onCountrySelected($event)">
+
+  </mat-select-country>
 
   <mat-form-field>
     <mat-label>Date of Birth</mat-label>

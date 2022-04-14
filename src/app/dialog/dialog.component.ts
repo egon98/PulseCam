@@ -2,6 +2,7 @@ import {Component, Inject, Input, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Country} from "@angular-material-extensions/select-country";
 
 @Component({
   selector: 'app-dialog',
@@ -49,6 +50,11 @@ export class DialogComponent implements OnInit {
 
   closeAndSetData() {
       this.dialog.close(MAT_DIALOG_DATA);
+  }
+
+  onCountrySelected($event: Country) {
+    this.country = $event.name;
+    //console.log(this.country)
   }
 
 

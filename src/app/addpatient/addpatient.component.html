@@ -30,6 +30,7 @@
   </mat-form-field>
   <br>
 
+
   <mat-select-country appearance="outline" label="Country" formControlName="country" autocomplete="off" (onCountrySelected)="onCountrySelected($event)">
 
   </mat-select-country>
@@ -58,7 +59,7 @@
     />
   </mat-form-field>
   <br>
-  <button mat-raised-button color="primary" (click)="onSubmit()">
+  <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="!form.valid || country === undefined">
     Submit
   </button>
 </form>

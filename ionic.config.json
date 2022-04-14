@@ -1,0 +1,12 @@
+{
+"defaultProject": "PulseCam",
+"projects": {
+"PulseCam": {
+  "name": "PulseCam",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+  }
+  }
+}

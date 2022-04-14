@@ -23,11 +23,11 @@ export class AddpatientComponent implements OnInit{
   }
 
 ngOnInit(): void {
-
+    console.log(this.country)
 }
 
   form = new FormGroup({
-    name: new FormControl('', [Validators.pattern('^[a-zA-ZÀ-ÿ_ ]*$')]),
+    name: new FormControl('', [Validators.required ,Validators.pattern('^[a-zA-ZÀ-ÿ_ ]*$')]),
     dateofbirth: new FormControl(''),
     ssn: new FormControl(''),
     country: new FormControl(''),
@@ -37,6 +37,7 @@ ngOnInit(): void {
 
   onCountrySelected($event: Country) {
     this.country = $event.name;
+    console.log(this.country)
   }
 
   onSubmit() {
@@ -57,6 +58,7 @@ ngOnInit(): void {
         .then(res => {
           console.log(res);
           this.form.reset();
+          window.location.reload();
         })
         .catch(e => {
           console.log(e);
