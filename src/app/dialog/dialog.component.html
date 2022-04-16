@@ -3,11 +3,11 @@
   <mat-form-field>
     <input matInput placeholder="Name" [(ngModel)]="name" autocomplete="off">
   </mat-form-field>
-
-  <mat-select-country appearance="outline" label="Country" [(ngModel)]="country" formControlName="country" autocomplete="off" (onCountrySelected)="onCountrySelected($event)">
+<div [formGroup]="this.form">
+  <mat-select-country appearance="outline" label="Country" formControlName="country" autocomplete="off" (onCountrySelected)="onCountrySelected($event)">
 
   </mat-select-country>
-
+</div>
   <mat-form-field>
     <mat-label>Date of Birth</mat-label>
     <input matInput
@@ -28,11 +28,17 @@
     <input matInput placeholder="Social Security Number" [(ngModel)]="ssn">
   </mat-form-field>
 
+  <mat-form-field>
+    <input matInput placeholder="Phone Number" [(ngModel)]="phonenumber">
+  </mat-form-field>
+
   <div mat-dialog-actions>
     <button mat-button (click)="closeDialog()">Close</button>
 
-    <button mat-button *ngIf="name.match('^[a-zA-ZÀ-ÿ_ ]*$')"
-            [mat-dialog-close]="{name: name, country: country, dateofbirth: dateofbirth, maiden: maiden, ssn: ssn}"
+    <button mat-button *ngIf="name.match('^[a-zA-ZÀ-ÿ ]+(-[a-zA-ZÀ-ÿ ]+)*$')
+                           && maiden.match('^[a-zA-ZÀ-ÿ ]+(-[a-zA-ZÀ-ÿ ]+)*$')
+                           && ssn.match('^[0-9]+(-?[0-9]+)+$')"
+            [mat-dialog-close]="{name: name, country: country, dateofbirth: dateofbirth, maiden: maiden, ssn: ssn, phonenumber: phonenumber}"
             cdkTrapFocus
             [cdkTrapFocusAutoCapture]="true">Ok</button>
 

@@ -39,6 +39,12 @@
     </mat-cell>
   </ng-container>
 
+  <ng-container matColumnDef="phonenumber">
+    <mat-header-cell *matHeaderCellDef>Phone number</mat-header-cell>
+    <mat-cell *matCellDef="let valami">
+      {{valami.phonenumber}}
+    </mat-cell>
+  </ng-container>
 
 
   <ng-container matColumnDef="editBtn">

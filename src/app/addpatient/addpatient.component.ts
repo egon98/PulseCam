@@ -18,6 +18,7 @@ import {DatePipe} from "@angular/common";
 export class AddpatientComponent implements OnInit{
   public country;
   id: any;
+  maxDate = new Date();
   constructor(private firestore: AngularFirestore) {
 
   }
@@ -27,11 +28,12 @@ ngOnInit(): void {
 }
 
   form = new FormGroup({
-    name: new FormControl('', [Validators.required ,Validators.pattern('^[a-zA-ZÀ-ÿ_ ]*$')]),
+    name: new FormControl('', [Validators.required ,Validators.pattern('^[a-zA-ZÀ-ÿ ]+(-[a-zA-ZÀ-ÿ ]+)*$')]),
     dateofbirth: new FormControl(''),
-    ssn: new FormControl(''),
+    ssn: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+(-?[0-9]+)+$')]),
     country: new FormControl(''),
-    maiden: new FormControl('')
+    maiden: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-ZÀ-ÿ ]+(-[a-zA-ZÀ-ÿ ]+)*$')]),
+    phonenumber: new FormControl('', [Validators.required, Validators.pattern('^[+]+[0-9]*$')])
 
   })
 
@@ -53,12 +55,15 @@ ngOnInit(): void {
         dateofbirth: this.form.value.dateofbirth.toISOString().split('T')[0],
         ssn: this.form.value.ssn,
         country: this.country,
-        maiden: this.form.value.maiden
+        maiden: this.form.value.maiden,
+        phonenumber: this.form.value.phonenumber
       })
         .then(res => {
           console.log(res);
           this.form.reset();
-          window.location.reload();
+          Object.keys(this.form.controls).forEach(key => {
+            this.form.controls[key].setErrors(null);
+          })
         })
         .catch(e => {
           console.log(e);

@@ -13,7 +13,6 @@ import {DialogComponent} from "../dialog/dialog.component";
 import {LiveAnnouncer} from "@angular/cdk/a11y";
 import {FormControl, FormGroup} from "@angular/forms";
 
-
 @Component({
   selector: 'app-patients',
   templateUrl: './patients.component.html',
@@ -24,7 +23,7 @@ export class PatientsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator
   @ViewChild(MatSort) sort: MatSort;
   patient: Patient[] = [];
-  public displayedColumns: string[] = ['name', 'country', 'dateofbirth', 'maiden', 'ssn', 'editBtn'];
+  public displayedColumns: string[] = ['name', 'country', 'dateofbirth', 'maiden', 'ssn', 'phonenumber', 'editBtn'];
   public obj: Object;
   public patients;
   public dataSource = new MatTableDataSource<Patient>();
@@ -32,9 +31,6 @@ export class PatientsComponent implements OnInit {
     this.patients = firestore.collection('Patients').valueChanges()
   }
   //asd = (event.target as HTMLInputElement).value;
-
-
-
 
   ngOnInit(): void {
     this.getPatientName();
@@ -73,20 +69,22 @@ export class PatientsComponent implements OnInit {
 
           //this.dataSource.data[res.position - 1] = res;
           //this.dataSource._updateChangeSubscription();
-          console.log(res.dateofbirth)
+          //console.log(res.dateofbirth.toISOString().split('T')[0])
           console.log(row.dateofbirth)
           if(res.name !== '') {
             this.firestore.collection('Patients').doc(row.id).update({
               name: res.name,
               country: res.country,
               maiden: res.maiden,
-              ssn: res.ssn
+              ssn: res.ssn,
+              phonenumber: res.phonenumber
             })
           }
             res.dateofbirth.setMinutes(res.dateofbirth.getMinutes() - res.dateofbirth.getTimezoneOffset());
             this.firestore.collection('Patients').doc(row.id).update({
               dateofbirth: res.dateofbirth.toISOString().split('T')[0]
             })
+
         }
     });
   }
@@ -98,7 +96,6 @@ export class PatientsComponent implements OnInit {
     }
 
   }
-
 
 announceSortChange(sortState: Sort) {
   if(sortState.direction) {

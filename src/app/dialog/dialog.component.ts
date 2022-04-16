@@ -10,12 +10,13 @@ import {Country} from "@angular-material-extensions/select-country";
   styleUrls: ['./dialog.component.css']
 })
 export class DialogComponent implements OnInit {
-//form: FormGroup;
+  form: FormGroup;
   name: string;
   country: any;
   dateofbirth: Date;
   maiden: any;
   ssn: any;
+  phonenumber: any;
 
   constructor(
     public dialog: MatDialogRef<DialogComponent>,
@@ -27,19 +28,19 @@ export class DialogComponent implements OnInit {
     this.dateofbirth = this.data.dateofbirth;
     this.maiden = this.data.maiden;
     this.ssn = this.data.ssn;
+    this.phonenumber = this.data.phonenumber;
 
-    /*this.form = new FormGroup({
-      name: new FormControl(this.name),
-      country: new FormControl(this.country),
-      dateofbirth: new FormControl(this.dateofbirth),
-      maiden: new FormControl(this.maiden),
-      ssn: new FormControl(this.ssn)
-    })*/
+    this.form = new FormGroup({
+      country: new FormControl('')
+    })
+
   }
 
   ngOnInit(): void {
     console.log('Dialog got', this.data);
   }
+
+
 
   closeDialog() {
     if(this.name.match('^[a-zA-Z]+$')) {

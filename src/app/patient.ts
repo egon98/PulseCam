@@ -5,4 +5,5 @@ export interface Patient {
   dateofbirth: string;
   maiden: string;
   ssn: string;
+  phonenumber: string;
 }

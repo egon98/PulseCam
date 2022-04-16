@@ -96,7 +96,8 @@ import {A11yModule} from "@angular/cdk/a11y";
     MatSortModule,
     DataTablesModule,
     MatDialogModule,
-    A11yModule
+    A11yModule,
+
   ],
   exports: [
     MatSidenavModule,
