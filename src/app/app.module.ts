@@ -47,6 +47,10 @@ import {DataTablesModule} from "angular-datatables";
 import { DialogComponent } from './dialog/dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {A11yModule} from "@angular/cdk/a11y";
+import {BsDropdownModule} from "ngx-bootstrap/dropdown";
+import { AddadoctorComponent } from './addadoctor/addadoctor.component';
+import { DoctorsComponent } from './doctors/doctors.component';
+import { DoctoreditdialogComponent } from './doctoreditdialog/doctoreditdialog.component';
 
 
 @NgModule({
@@ -63,7 +67,10 @@ import {A11yModule} from "@angular/cdk/a11y";
     ProfileComponent,
     AddpatientComponent,
     PatientsComponent,
-    DialogComponent
+    DialogComponent,
+    AddadoctorComponent,
+    DoctorsComponent,
+    DoctoreditdialogComponent
   ],
   imports: [
     BrowserModule,
@@ -97,7 +104,7 @@ import {A11yModule} from "@angular/cdk/a11y";
     DataTablesModule,
     MatDialogModule,
     A11yModule,
-
+    BsDropdownModule
   ],
   exports: [
     MatSidenavModule,

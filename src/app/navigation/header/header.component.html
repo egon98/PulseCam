@@ -12,7 +12,7 @@
   </div>
   <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
 
-    <ul fxFlex fxLayoutAlign="end" fxLayoutGap="10px" class="navigation-items" style="margin-right: 3%">
+    <ul fxFlex fxLayoutAlign="end" fxLayoutGap="10px" class="navigation-items" style="margin-right: 8%">
       <li *ngIf="!authService.userData as user">
         <a routerLink="/signup">Sign Up</a>
       </li>
@@ -20,6 +20,8 @@
         <a routerLink="/login">Login</a>
       </li>
       <li *ngIf="authService.userData as user" >
+        <a routerLink="/doctors" style="margin-right: 5%">Doctors</a>
+        <a routerLink="/addadoctor" style="margin-right: 5%">Add Doctor</a>
         <a routerLink="/patients" style="margin-right: 5%">Patients</a>
         <a routerLink="/addpatient" style="margin-right: 5%">Add Patient</a>
         <a routerLink="/profile" style="margin-right: 5%">Profile</a>

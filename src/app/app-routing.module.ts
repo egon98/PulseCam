@@ -12,6 +12,8 @@ import {PasswordResetComponent} from "./password-reset/password-reset.component"
 import {ProfileComponent} from "./profile/profile.component";
 import {AddpatientComponent} from "./addpatient/addpatient.component";
 import {PatientsComponent} from "./patients/patients.component";
+import {AddadoctorComponent} from "./addadoctor/addadoctor.component";
+import {DoctorsComponent} from "./doctors/doctors.component";
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent},
@@ -22,7 +24,9 @@ const routes: Routes = [
   { path: 'passwordreset', component: PasswordResetComponent},
   { path: 'profile', component: ProfileComponent},
   { path: 'addpatient', component: AddpatientComponent},
-  { path: 'patients', component: PatientsComponent}
+  { path: 'patients', component: PatientsComponent},
+  { path: 'addadoctor', component: AddadoctorComponent},
+  { path: 'doctors', component: DoctorsComponent}
 ];
 
 @NgModule({

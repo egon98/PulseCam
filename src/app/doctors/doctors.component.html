@@ -11,31 +11,24 @@
     </mat-cell>
   </ng-container>
 
-  <ng-container matColumnDef="country">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>Country</mat-header-cell>
+  <ng-container matColumnDef="age">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Age</mat-header-cell>
     <mat-cell *matCellDef="let valami">
-     {{valami.country}}
+      {{valami.age}}
     </mat-cell>
   </ng-container>
 
-  <ng-container matColumnDef="dateofbirth">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>Date of Birth</mat-header-cell>
+  <ng-container matColumnDef="specialization">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Specialization</mat-header-cell>
     <mat-cell *matCellDef="let valami">
-      {{valami.dateofbirth}}
+      {{valami.specialization}}
     </mat-cell>
   </ng-container>
 
-  <ng-container matColumnDef="maiden">
-    <mat-header-cell *matHeaderCellDef>Mother's maiden name</mat-header-cell>
+  <ng-container matColumnDef="email">
+    <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
     <mat-cell *matCellDef="let valami">
-      {{valami.maiden}}
-    </mat-cell>
-  </ng-container>
-
-  <ng-container matColumnDef="ssn">
-    <mat-header-cell *matHeaderCellDef>Social security number</mat-header-cell>
-    <mat-cell *matCellDef="let valami">
-       {{valami.ssn}}
+      {{valami.email}}
     </mat-cell>
   </ng-container>
 
@@ -66,3 +59,4 @@
 
 <mat-paginator [length]="100" [pageSize]="5" [pageSizeOptions]="[5, 10, 25]" aria-label="Select page">
 </mat-paginator>
+

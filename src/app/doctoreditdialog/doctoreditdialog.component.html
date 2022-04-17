@@ -1,0 +1,35 @@
+<div class="basic-container">
+
+  <mat-form-field>
+    <input matInput placeholder="Name" [(ngModel)]="name" autocomplete="off">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Age" [(ngModel)]="age" autocomplete="off">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Specalizaion" [(ngModel)]="specialization">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Email" [(ngModel)]="email">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Phone Number" [(ngModel)]="phonenumber">
+  </mat-form-field>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="closeDialog()">Close</button>
+
+    <button mat-button *ngIf="name.match('^[a-zA-ZÀ-ÿ ]+(-[a-zA-ZÀ-ÿ ]+)*$')
+                           && age.match('[1-9]{2}$')
+                           && specialization.match('^[a-zA-ZÀ-ÿ ]+(-[a-zA-ZÀ-ÿ ]+)*$')
+                           && phonenumber.match('^[+]+[0-9]*$')"
+            [mat-dialog-close]="{name: name, age: age, specialization: specialization, email: email, phonenumber: phonenumber}"
+            cdkTrapFocus
+            [cdkTrapFocusAutoCapture]="true">Ok</button>
+
+  </div>
+</div>

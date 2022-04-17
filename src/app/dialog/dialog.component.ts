@@ -40,13 +40,8 @@ export class DialogComponent implements OnInit {
     console.log('Dialog got', this.data);
   }
 
-
-
   closeDialog() {
-    if(this.name.match('^[a-zA-Z]+$')) {
       this.dialog.close();
-    }
-
   }
 
   closeAndSetData() {

@@ -53,7 +53,7 @@ export class PatientsComponent implements OnInit {
 
   dialogOpen(row: Patient, event) {
     const dialog = this.dialog.open(DialogComponent, {
-      width: '250px',
+      width: '280px',
       disableClose: true,
       data: row
     });
